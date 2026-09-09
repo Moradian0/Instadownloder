@@ -15,6 +15,10 @@ BOT_TOKEN = os.environ.get("BOT_TOKEN")
 FREE_DAILY_LIMIT = int(os.environ.get("FREE_DAILY_LIMIT", "3"))
 ADMIN_ID = os.environ.get("ADMIN_ID")  # your own Telegram user id, for /stats and manual premium grants
 
+# Use a SEPARATE/throwaway Instagram account here, not your personal one.
+IG_USERNAME = os.environ.get("IG_USERNAME")
+IG_PASSWORD = os.environ.get("IG_PASSWORD")
+
 USAGE_FILE = "usage.json"
 PREMIUM_FILE = "premium.json"
 
@@ -131,6 +135,10 @@ async def handle_link(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "quiet": True,
         "no_warnings": True,
     }
+
+    if "instagram.com" in text and IG_USERNAME and IG_PASSWORD:
+        ydl_opts["username"] = IG_USERNAME
+        ydl_opts["password"] = IG_PASSWORD
 
     try:
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
