@@ -73,8 +73,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def premium_info(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(
         "برای عضویت نامحدود (بدون محدودیت روزانه) با ادمین ربات در تماس باش:\n"
-        "@YOUR_USERNAME_HERE\n\n"
-        "(این متن رو با آیدی خودت جایگزین کن)"
+        "@m_h_moradian"
     )
 
 
